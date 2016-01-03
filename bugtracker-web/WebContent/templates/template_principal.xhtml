@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Sistema de controle de Bugs- Bug Tracker</title>
+	<h:outputStylesheet library="css" name="app.css" />
+</h:head>
+
+<h:body>
+<ui:insert name="cabecalho">
+	<div id="cabecalho">
+		<ul id="menu-principal">
+			<li><h:link value="Usuário" outcome="/pages/usuario/lista" /></li>
+			<li><h:link value="Bugs" outcome="/pages/bug/lista" /></li>
+		</ul>
+		<div id="user-info">
+			<h:form>
+				#{usuarioWeb.usuario.login} - 
+				<h:commandLink value="Sair" action="#{loginBean.deslogar}"/>
+			</h:form>
+		</div>
+	</div>
+</ui:insert>
+	
+	<!--   <h:messages errorClass="errors" infoClass="notice"/>-->
+	
+	<p:growl autoUpdate="true"/>
+	
+	
+	<div id="conteudo">
+		<p:ajaxStatus>
+			<f:facet name="start">
+				<h:graphicImage library="imagens" name="ajax-loader.gif"/>
+			</f:facet>
+			<f:facet name="complete">
+				<h:outputText value=""/>
+			</f:facet>
+		</p:ajaxStatus>
+		<div id="container">
+			<ui:insert name="corpo"/>
+		</div>
+	</div>
+	
+	<div id="rodape">
+		<div class="rodape-bar">
+			<strong>Bug Tracker</strong> - Controle de bugs | Triadworks
+		</div>
+	</div>
+</h:body>
+
+</html>
